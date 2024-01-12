@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report-replies</title>
+  <link href="css/userReports.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="report-replies-box">
+<div style="margin-top: 1%" id="email-reply-report"></div>
+<button class="user-load-reports" onclick="loadReportReplies()">load Reports</button>
+</div>
+
+<div class="Reply-Box">
+
+
+</div>
+
+
+<script>
+  const paramEmail = new URLSearchParams(window.location.search);
+  const userEmail = paramEmail.get('email')
+  document.getElementById("email-reply-report").innerText = userEmail;
+</script>
+<script src="userDashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin-Dashboard</title>
+    <link href="css/adminDashboard.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<h1 style="margin-left: 1%; font-family:Segoe UI,serif ">Admin-Dasboard</h1>
+<button class="load-all-users" onclick="loadAllUsers()">load all Users</button>
+<button class="admin-edit-users" onclick="makeUsersEditable()">edit users</button>
+<button class="admin-save-user" onclick="updateUserData()">save users</button>
+<button class="admin-create-user" onclick="createUser()">create new user</button>
+<button class="admin-create-user" onclick="saveNewUser()">save new user</button>
+<button class="admin-view-reports" onclick="viewReportPage()">view Reports</button>
+<button class="admin-returnto-chat" onclick="returnToUserDashboard()">User Dashboard</button>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline">
+            <div class="form-group">
+                <label id="global-message-label" style="margin-right: 4px; margin-left: 1%; color: white" for="message">Global Message</label>
+                <input type="text" id="message" class="form-control" placeholder="Enter your message here...">
+            </div>
+            <button id="send" class="btn btn-default" type="button">Send</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="message-history" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Messages
+                    <button class="clear-old-messages" onclick="clearOldMessages()">clear</button>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="messages">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="all-user-table">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/webjars/org.webjars/stomp-websocket/2.3.3/stomp.js"></script>
+<script src="/WebSocketScript.js"></script>
+
+<script src="ProfileScript.js"></script>
+<script src="adminDashboard.js"></script>
+<script src="userDashboard.js"></script>
+<script>
+    function returnToUserDashboard() { window.location.href = "index.html";}
+</script>
+
+</body>
+
+</html>

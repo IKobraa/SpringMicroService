@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report-Page</title>
+    <link href="css/report.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="report-box-design">
+<form id="reportForm">
+    <label for="absender-report">Absender:</label>
+    <input type="text" id="absender-report" name="absender" required readonly="">
+
+    <label for="abteilung-report">Abteilung:</label>
+    <input type="text" id="abteilung-report" name="abteilung" required readonly="">
+
+    <label for="title-report">Überschrift:</label>
+    <input type="text" id="title-report" name="ueberschrift" required>
+
+    <label for="dateTime-report">Datum/Uhrzeit:</label>
+    <input type="datetime-local" id="dateTime-report" name="datumUhrzeit" required>
+
+    <label for="problem-report">Problembeschreibung:</label>
+    <textarea id="problem-report" name="problembeschreibung" rows="4" required></textarea>
+
+    <button type="button" onclick="submitForm()">Report abschicken</button>
+</form>
+</div>
+<script src="reportDataScript.js"></script>
+</body>
+
+</html>

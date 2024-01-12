@@ -1,0 +1,21 @@
+.single-report {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.single-report h3 {
+    color: #333;
+}
+
+.single-report p {
+    margin: 5px 0;
+}
+
+.single-report hr {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+

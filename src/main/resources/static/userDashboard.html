@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring WS Chat</title>
+    <link href="css/my.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="available-users">
+
+</div>
+
+<div class="container" style="margin-top: 50px">
+    <div class="profile-box">
+        <div class="profile-email" id="user-email">User Email</div>
+        <button class="detail-button" onclick="showProfile()">Details</button>
+        <button class="logout-button" onclick="logout()">Logout</button>
+        <button class="admin-service-button" onclick="adminLogin()">Admin-Dashboard</button>
+        <button class="show-available-users" onclick="showAvailableUsers()">show available Users</button>
+        <button class="report-to-admin" onclick="loadReportPage()">Report</button>
+        <button class="report-replies" onclick="loadReportReplyPage()">view Report-replies</button>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col-md-12">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="private-message-id">User-Email</label>
+                    <input type="text" id="private-message-id" class="form-control" placeholder="Enter email here...">
+                    <label for="private-message">Private Message</label>
+                    <input type="text" id="private-message" class="form-control" placeholder="Enter your message here...">
+                </div>
+                <button id="send-private" class="btn btn-default" type="button">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="message-history" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Messages
+                        <button class="show-old-messages" onclick="showOldMessages()">show Message-Log</button>
+                        <button class="clear-old-messages" onclick="clearOldMessages()">clear</button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    const param = new URLSearchParams(window.location.search);
+    const userEmail = param.get('email')
+    document.getElementById("user-email").innerText = userEmail;
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/webjars/org.webjars/stomp-websocket/2.3.3/stomp.js"></script>
+<script src="/WebSocketScript.js"></script>
+<script src="userDashboard.js"></script>
+</body>
+</html>

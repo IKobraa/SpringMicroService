@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#email-reply-report {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.admin-load-reports {
+   margin-bottom: 2%;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+.Reply-Box {
+    margin-top: 20px;
+}
+
+.single-report {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.single-report h3 {
+    color: #333;
+}
+
+.single-report p {
+    margin: 5px 0;
+}
+
+.single-report hr {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.done-button, #report-reply-button, .reply-button {
+    background-color: #008CBA;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.done-button:hover, #report-reply-button:hover, .reply-button {
+    background-color: #0077A3;
+}
+
+.report-replies-box {
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.user-load-reports, .admin-load-reports {
+    background-color: #0077A3;
+    border: 1px solid black;
+    border-radius: 5em;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+}
+
+.admin-load-reports:hover {
+    background-color: #0077A3;
+}

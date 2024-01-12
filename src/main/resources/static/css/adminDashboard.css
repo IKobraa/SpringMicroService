@@ -1,0 +1,145 @@
+#all-user-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+body {
+    font-family:Segoe UI,serif;
+    background-color: #f2f2f2;
+    background-image: url("background-adminDashboard.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: white;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    transition: background-color 0.3s ease;
+    font-family: "Segoe UI", serif;
+    border : 1px solid white;
+}
+h1 {
+    color: mintcream;
+}
+button:hover {
+    background-color: gray;
+}
+.user-data {
+    flex: 1;
+    margin-right: 6px;
+
+}
+
+
+.user-row{
+    align-items: center;
+    padding: 10px;
+    border : 1px solid white;
+    width: calc(33.33% - 10px);
+    margin: 10px;
+}
+
+
+
+.key-value-pair {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+span {
+    width: 100px;
+}
+
+input {
+    width: calc(100% - 100px);
+    margin-left: 5px;
+}
+
+/*input {*/
+/*    width: 100%;*/
+/*    margin-right: 2px;*/
+/*    font-family: "Segoe UI", serif;*/
+/*}*/
+
+#message-history {
+    width: 100%;
+}
+
+#notifications {
+    border-radius: 50%;
+    padding: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color : white;
+}
+
+th {
+    color : white;
+    background-color: rgba(60,62,63,0.5);
+    border: 1px solid white;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 250px;
+    margin-left: 1%;
+}
+
+
+.btn-default {
+    background-color: black;
+    color: #fff;
+    border : 1px solid white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.btn-default:hover {
+    background-color: gray;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#global-message-label {
+    margin-top: 2%;
+}

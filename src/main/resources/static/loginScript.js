@@ -58,7 +58,7 @@ function loginToAdminService() {
 
     let email = document.getElementById("email-admin").value;
     let password = document.getElementById("password-admin").value;
-    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/"+email+"/"+password)
+    fetch("https://roundhouse.proxy.rlwy.net/api/admin/"+email+"/"+password)
         .then(res => {
             if(!res.ok) {
                 throw new Error("HTTP error! Status:" +res.status);

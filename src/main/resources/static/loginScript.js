@@ -58,7 +58,7 @@ function loginToAdminService() {
 
     let email = document.getElementById("email-admin").value;
     let password = document.getElementById("password-admin").value;
-    fetch("https://localhost:8085/api/admin/"+email+"/"+password)
+    fetch("https://localhost:6137/api/admin/"+email+"/"+password)
         .then(res => {
             if(!res.ok) {
                 throw new Error("HTTP error! Status:" +res.status);

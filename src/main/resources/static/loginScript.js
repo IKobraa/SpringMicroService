@@ -4,7 +4,7 @@ function loginToService() {
      let email = document.getElementById('email').value;
      let password = document.getElementById('password').value;
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/user/login",{
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/user/login",{
         method : "POST",
         headers: {
             "Content-Type": "application/json",
@@ -32,7 +32,7 @@ function logout() {
 
     let email = document.getElementById("user-email").innerText;
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/user/logout",{
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/user/logout",{
         method : "POST",
         headers: {
             "Content-Type": "application/json",
@@ -58,7 +58,7 @@ function loginToAdminService() {
 
     let email = document.getElementById("email-admin").value;
     let password = document.getElementById("password-admin").value;
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/"+email+"/"+password)
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/"+email+"/"+password)
         .then(res => {
             if(!res.ok) {
                 throw new Error("HTTP error! Status:" +res.status);

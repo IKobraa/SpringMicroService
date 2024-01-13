@@ -15,7 +15,7 @@ function submitForm() {
     const problem = document.getElementById("problem-report").value;
 
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/user/submitReport",{
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/user/submitReport",{
         method : "POST",
         headers: {
             "Content-Type": "application/json",

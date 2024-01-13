@@ -34,7 +34,7 @@ function showAvailableUsers(){
     cont.innerHTML = "";
 
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/user/all")
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/user/all")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);
@@ -77,7 +77,7 @@ function showOldMessages() {
 
     const myEmail = document.querySelector(".profile-email#user-email").innerText;
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/user/getAllMessages")
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/user/getAllMessages")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);
@@ -114,7 +114,7 @@ async function loadReportPage() {
     const myEmail = document.querySelector(".profile-email#user-email").innerText;
     let department = " ";
 
-    await fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/user/email/"+myEmail)
+    await fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/user/email/"+myEmail)
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);
@@ -141,7 +141,7 @@ function loadReportReplies() {
     const myEmail = document.getElementById("email-reply-report").innerText;
     replyBox.innerHTML = " ";
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/getAllReports")
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/getAllReports")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);
@@ -176,7 +176,7 @@ function loadReportReplies() {
 
 function doneReport(reportId) {
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/user/deleteReport/"+reportId, {
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/user/deleteReport/"+reportId, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",

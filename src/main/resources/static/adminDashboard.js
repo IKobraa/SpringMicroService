@@ -1,6 +1,6 @@
 function loadAllUsers() {
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/user/all")
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/user/all")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);
@@ -65,7 +65,7 @@ function loadAllUsers() {
 
 function makeUsersEditable() {
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/user/all")
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/user/all")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);
@@ -129,7 +129,7 @@ function updateUserData() {
 
     const updatedUserData = saveUserData();
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/saveAll",{
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/saveAll",{
         method : "POST",
         headers: {
             "Content-Type": "application/json",
@@ -184,7 +184,7 @@ function createUser() {
 }
 function saveNewUser() {
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/add",{
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/add",{
         method : "POST",
         headers: {
             "Content-Type": "application/json",
@@ -229,7 +229,7 @@ function loadReports() {
     const reportBox = document.querySelector(".Report-Box");
     reportBox.innerHTML = " ";
 
-    fetch("http://roundhouse.proxy.rlwy.net:46083/api/admin/getAllReports")
+    fetch("https://roundhouse.proxy.rlwy.net:46083/api/admin/getAllReports")
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error! Status:" +response.status);

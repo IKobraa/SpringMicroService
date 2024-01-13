@@ -61,7 +61,7 @@ async function sendPrivateMessage() {
         await saveMessages(msg, email, senderEmail);
         console.log("Sender Email:", senderEmail);
 
-        const response = await fetch("http://localhost:8085/send-private-message/" + email, {
+        const response = await fetch("http://roundhouse.proxy.rlwy.net:46083/send-private-message/" + email, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -81,7 +81,7 @@ async function sendPrivateMessage() {
 
 async function saveMessages(msg,receiverEmail,senderEmail) {
     try {
-    const response = await fetch("http://localhost:8085/api/user/saveUserMessage", {
+    const response = await fetch("http://roundhouse.proxy.rlwy.net:46083/api/user/saveUserMessage", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

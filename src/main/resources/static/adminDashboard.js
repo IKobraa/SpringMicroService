@@ -1,3 +1,5 @@
+
+
 function loadAllUsers() {
 
     fetch("http://localhost:8085/api/admin/user/all")
@@ -10,6 +12,13 @@ function loadAllUsers() {
         .then(data => {
             const userTable = document.getElementById("all-user-table");
             userTable.innerHTML = "";
+
+            let sortSickDays = document.createElement("button");
+            sortSickDays.textContent = "sort by sick-days";
+            sortSickDays.onclick = () => sortUsersBySickDays();
+            let divSick = document.getElementById("filter");
+            divSick.innerHTML = " ";
+            divSick.appendChild(sortSickDays);
 
             data.forEach(userData => {
                 const userRow = document.createElement("div");
@@ -63,7 +72,7 @@ function loadAllUsers() {
 
 }
 
-function makeUsersEditable() {
+function sortUsersBySickDays() {
 
     fetch("http://localhost:8085/api/admin/user/all")
         .then(response => {
@@ -73,6 +82,90 @@ function makeUsersEditable() {
             return response.json();
         })
         .then(data => {
+            data.sort((a,b) => (a.sickDays < b.sickDays) ? 1 : (b.sickDays < a.sickDays) ? -1 : 0);
+            const userTable = document.getElementById("all-user-table");
+            userTable.innerHTML = "";
+
+            data.forEach(userData => {
+
+
+                let divSick = document.getElementById("filter");
+                divSick.innerHTML = " ";
+
+
+
+                const userRow = document.createElement("div");
+                userRow.classList.add("user-row");
+
+                const userDataDiv = document.createElement("div");
+                userDataDiv.classList.add("user-data");
+
+                for (const [key, value] of Object.entries(userData)) {
+                    const keyValueDiv = document.createElement("div");
+                    keyValueDiv.textContent = `${key}: ${value}`;
+                    userDataDiv.appendChild(keyValueDiv);
+                }
+                const deleteButton = document.createElement("button");
+                deleteButton.style.backgroundColor = "#660000";
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", () => {
+
+                    fetch("http://localhost:8085/api/admin/delete", {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({name: userData.name, surname: userData.surname, email: userData.email,
+                            department: userData.department, password: userData.password
+                        }),
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error("HTTP error! Status: " + response.status);
+                            }
+                            return response.json();
+
+                        })
+                        .catch(error => {
+                            console.log("user could not be deleted! error:  "+error);
+                        })
+                });
+
+
+                userDataDiv.appendChild(deleteButton);
+                userRow.appendChild(userDataDiv);
+                userTable.appendChild(userRow);
+
+            });
+
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+
+}
+
+
+function makeUsersEditable() {
+
+    let divSick = document.getElementById("filter");
+    divSick.innerHTML = " ";
+
+    fetch("http://localhost:8085/api/admin/user/all")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error! Status:" +response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            let divSick = document.getElementById("filter");
+            let saveButton = document.createElement("button");
+            saveButton.textContent = "update Userdata";
+            saveButton.onclick = () => updateUserData();
+            divSick.appendChild(saveButton);
+
+
             const userTable = document.getElementById("all-user-table");
             userTable.innerHTML = "";
 
@@ -81,7 +174,8 @@ function makeUsersEditable() {
                 userRow.classList.add("user-row");
 
                 for (const [key, value] of Object.entries(userData)) {
-                    const keyValueDiv = document.createElement("div");
+                    if (key !== "password" && key !== "chatId" && key !=="lastLoginTime") {
+                        const keyValueDiv = document.createElement("div");
                     keyValueDiv.classList.add("key-value-pair");
 
                     const keySpan = document.createElement("span");
@@ -94,6 +188,7 @@ function makeUsersEditable() {
                     keyValueDiv.appendChild(valueInput);
 
                     userRow.appendChild(keyValueDiv);
+                 }
                 }
 
                 userTable.appendChild(userRow);
@@ -140,6 +235,7 @@ function updateUserData() {
             if (!response.ok) {
                 throw new Error("Failed to update user data");
             }
+            alert("user-data was successfully updated")
         })
         .catch(error => {
             console.error("Error updating user data:", error);
@@ -150,15 +246,26 @@ function updateUserData() {
 
 function createUser() {
 
+    let divSick = document.getElementById("filter");
+    divSick.innerHTML = " ";
+
     const userTable = document.getElementById("all-user-table");
     userTable.innerHTML = "";
 
+    let saveNewUserButton = document.createElement("button");
+    saveNewUserButton.textContent = "save new user";
+    saveNewUserButton.onclick = () => saveNewUser();
+    divSick.appendChild(saveNewUserButton);
+
+    let createUserDiv = document.createElement("div");
+    createUserDiv.id = "createUserForm";
+
     const fields = [
-        { label: "Name", id: "name", type: "text", defaultValue: "" },
-        { label: "Surname", id: "surname", type: "text", defaultValue: "" },
-        { label: "Email", id: "email", type: "text", defaultValue: "" },
-        { label: "Department", id: "department", type: "text", defaultValue: "" },
-        { label: "Password", id: "password", type: "password", defaultValue: "" }
+        {label: "Name", id: "name", type: "text", defaultValue: ""},
+        {label: "Surname", id: "surname", type: "text", defaultValue: ""},
+        {label: "Email", id: "email", type: "text", defaultValue: ""},
+        {label: "Department", id: "department", type: "text", defaultValue: ""},
+        {label: "Password", id: "password", type: "password", defaultValue: ""}
     ];
 
     fields.forEach(field => {
@@ -177,14 +284,16 @@ function createUser() {
 
         container.appendChild(label);
         container.appendChild(input);
-        userTable.appendChild(container);
+        createUserDiv.appendChild(container);
+        userTable.appendChild(createUserDiv);
     });
 
 
 }
+
 function saveNewUser() {
 
-    fetch("http://localhost:8085/api/admin/add",{
+    fetch("http://localhost:8085/api/admin/add", {
         method : "POST",
         headers: {
             "Content-Type": "application/json",
@@ -199,6 +308,7 @@ function saveNewUser() {
             return response.json();
         })
         .catch(error => {
+            alert("user could not be created!")
             console.error("Error adding user:", error);
         });
 

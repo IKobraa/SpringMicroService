@@ -12,9 +12,7 @@
 <h1 style="margin-left: 1%; font-family:Segoe UI,serif ">Admin-Dasboard</h1>
 <button class="load-all-users" onclick="loadAllUsers()">load all Users</button>
 <button class="admin-edit-users" onclick="makeUsersEditable()">edit users</button>
-<button class="admin-save-user" onclick="updateUserData()">save users</button>
 <button class="admin-create-user" onclick="createUser()">create new user</button>
-<button class="admin-create-user" onclick="saveNewUser()">save new user</button>
 <button class="admin-view-reports" onclick="viewReportPage()">view Reports</button>
 <button class="admin-returnto-chat" onclick="returnToUserDashboard()">User Dashboard</button>
 
@@ -47,9 +45,14 @@
     </div>
 </div>
 
+
+
+<div id="filter"></div>
+
 <div id="all-user-table">
 
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>

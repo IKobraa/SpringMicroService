@@ -28,9 +28,10 @@ function loginToService() {
 
 }
 
-function logout() {
+async function logout() {
 
     let email = document.getElementById("user-email").innerText;
+
 
     fetch("http://localhost:8085/api/user/logout",{
         method : "POST",
@@ -42,6 +43,8 @@ function logout() {
         .then(data => {
             console.log("Server response:", data);
             if (data.status) {
+
+                alert(data.message);
                 window.location.href = "index.html";
             } else {
                 console.error("Logout failed. Server response:", data);
@@ -53,6 +56,7 @@ function logout() {
             alert("Logout failed!");
         });
 }
+
 
 function loginToAdminService() {
 

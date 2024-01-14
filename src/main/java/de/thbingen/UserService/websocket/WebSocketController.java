@@ -37,7 +37,7 @@ public class WebSocketController {
     public String getId(String email) {
 
         try {
-            String url = "https://roundhouse.proxy.rlwy.net:46083/api/admin/user/email/" + email;
+            String url = "http://localhost:8085/api/admin/user/email/" + email;
 
             URL obj = new URL(url);
 

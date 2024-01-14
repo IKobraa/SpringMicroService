@@ -37,7 +37,7 @@ public class UserHandshakeHandler extends DefaultHandshakeHandler {
 
             try {
 
-                URL url = new URL("https://roundhouse.proxy.rlwy.net:46083/api/user/saveID");
+                URL url = new URL("http://localhost:8085/api/user/saveID");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
                 connection.setDoOutput(true);

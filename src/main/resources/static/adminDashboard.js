@@ -35,30 +35,8 @@ function loadAllUsers() {
                 const deleteButton = document.createElement("button");
                 deleteButton.style.backgroundColor = "#660000";
                 deleteButton.textContent = "Delete";
-                deleteButton.addEventListener("click", () => {
 
-                    fetch("http://localhost:8085/api/admin/delete", {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({name: userData.name, surname: userData.surname, email: userData.email,
-                            department: userData.department, password: userData.password
-                        }),
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error("HTTP error! Status: " + response.status);
-                            }
-                            return response.json();
-
-                        })
-                        .catch(error => {
-                            console.log("user could not be deleted! error:  "+error);
-                        })
-                });
-
-
+                deleteButton.addEventListener("click", () => { loadAllUsersDelete(userData)});
                 userDataDiv.appendChild(deleteButton);
                 userRow.appendChild(userDataDiv);
                 userTable.appendChild(userRow);
@@ -72,6 +50,30 @@ function loadAllUsers() {
 
 }
 
+function loadAllUsersDelete(userData) {
+    fetch("http://localhost:8085/api/admin/delete", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name: userData.name, surname: userData.surname, email: userData.email,
+            department: userData.department, password: userData.password
+        }),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error! Status: " + response.status);
+            }
+            alert("user "+userData.email+" was deleted!");
+            loadAllUsers();
+            return response.json();
+
+        })
+        .catch(error => {
+            console.log("user could not be deleted! error:  "+error);
+        })
+}
+
 function sortUsersBySickDays() {
 
     fetch("http://localhost:8085/api/admin/user/all")
@@ -82,17 +84,15 @@ function sortUsersBySickDays() {
             return response.json();
         })
         .then(data => {
+
             data.sort((a,b) => (a.sickDays < b.sickDays) ? 1 : (b.sickDays < a.sickDays) ? -1 : 0);
             const userTable = document.getElementById("all-user-table");
             userTable.innerHTML = "";
 
             data.forEach(userData => {
 
-
                 let divSick = document.getElementById("filter");
                 divSick.innerHTML = " ";
-
-
 
                 const userRow = document.createElement("div");
                 userRow.classList.add("user-row");
@@ -108,29 +108,7 @@ function sortUsersBySickDays() {
                 const deleteButton = document.createElement("button");
                 deleteButton.style.backgroundColor = "#660000";
                 deleteButton.textContent = "Delete";
-                deleteButton.addEventListener("click", () => {
-
-                    fetch("http://localhost:8085/api/admin/delete", {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({name: userData.name, surname: userData.surname, email: userData.email,
-                            department: userData.department, password: userData.password
-                        }),
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error("HTTP error! Status: " + response.status);
-                            }
-                            return response.json();
-
-                        })
-                        .catch(error => {
-                            console.log("user could not be deleted! error:  "+error);
-                        })
-                });
-
+                deleteButton.addEventListener("click", () => { loadAllUsersDelete(userData)});
 
                 userDataDiv.appendChild(deleteButton);
                 userRow.appendChild(userDataDiv);
@@ -305,6 +283,7 @@ function saveNewUser() {
                 throw new Error("Failed to add new user");
             }
             alert("user was successfully saved")
+            createUser();
             return response.json();
         })
         .catch(error => {

@@ -308,7 +308,6 @@ function saveNewUser() {
             return response.json();
         })
         .catch(error => {
-            alert("user could not be created!")
             console.error("Error adding user:", error);
         });
 

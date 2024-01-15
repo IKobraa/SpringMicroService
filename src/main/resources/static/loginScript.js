@@ -71,7 +71,7 @@ function loginToAdminService() {
             window.location.href = "adminDashboard.html";
         })
         .catch(error => {
-            // Handle errors during the fetch
+
             console.error("Fetch error:", error);
         });
 

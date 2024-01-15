@@ -44,7 +44,6 @@ async function sendMessage() {
 }
 
 async function sendPrivateMessage() {
-    //convert to STOMP message
     try {
         const input = document.getElementById("private-message-id");
         const message = document.getElementById("private-message");

@@ -152,11 +152,12 @@ function makeUsersEditable() {
                 userRow.classList.add("user-row");
 
                 for (const [key, value] of Object.entries(userData)) {
-                    if (key !== "password" && key !== "chatId" && key !=="lastLoginTime") {
+
                         const keyValueDiv = document.createElement("div");
                     keyValueDiv.classList.add("key-value-pair");
 
                     const keySpan = document.createElement("span");
+
                     keySpan.textContent = `${key}: `;
                     keyValueDiv.appendChild(keySpan);
 
@@ -166,7 +167,7 @@ function makeUsersEditable() {
                     keyValueDiv.appendChild(valueInput);
 
                     userRow.appendChild(keyValueDiv);
-                 }
+
                 }
 
                 userTable.appendChild(userRow);
